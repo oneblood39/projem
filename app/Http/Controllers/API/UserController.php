@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return User::all();
     }
 
     /**
@@ -27,6 +27,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request,[
+        'name' => 'required|string|max:110',
+        'email' => 'required|string|email|max:100|unique:users',
+        'password' => 'required|string|min:5'
+      ]);
        return User::create([
          'name' => $request['name'],
          'email' => $request['email'],
