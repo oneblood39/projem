@@ -9,24 +9,13 @@ require('./bootstrap');
 window.Vue = require('vue');
 import moment from 'moment';
 import { Form, HasError, AlertError } from 'vform';
-/*
-import swal from 'sweetalert2'
-window.swal = swal;
 
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  onOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
+//import swal from 'sweetalert2'
+//window.swal = Swal;
 
-window.Toast = toast;
-*/
+import swal from 'sweetalert2';
+window.Swal = swal;
+
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
@@ -52,6 +41,9 @@ Vue.filter('upText', function(text){
 Vue.filter('myDate',function(created){
   return moment(created).format('MMMM Do YYYY');
 })
+
+let Fire = new Vue();
+window.Fire = Fire;
 
 /**
  * The following block of code may be used to automatically register your

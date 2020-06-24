@@ -35,7 +35,7 @@
                  <a href="#">Edit
                  <i class="fa fa-edit text-blue"></i>
                  </a>
-                 <a href="#">Delete
+                 <a href="#" @click="deleteUser(user.id)">Delete
                  <i class="fa fa-trash text-red"></i>
                  </a>
                   </td>
@@ -131,16 +131,61 @@
      }
     },
     methods: {
+       deleteUser(id){
+       Swal.fire({
+           title: 'Are you sure?',
+           text: "You won't be able to revert this!",
+           icon: 'warning',
+           showCancelButton: true,
+           confirmButtonColor: '#3085d6',
+           cancelButtonColor: '#d33',
+           confirmButtonText: 'Yes, delete it!'
+           }).then((result) => {
+
+              //send request to server
+              if (result.value) {
+
+              this.form.delete('api/user/'+id).then(()=>{
+                    Swal.fire(
+                         'Deleted!',
+                          'success'
+                    )
+                    Fire.$emit('AfterCreate');
+                   })
+                   .catch (()=>{
+                    Swal.fire(
+                     'Cant Deleted!',
+                       'error'
+                     )
+                   });
+
+              }
+
+
+           })
+       },
        loadUsers(){
            axios.get("api/user").then(({ data }) => (this.users = data));
        },
        createUser(){
-       this.form.post('api/user');
-       $('#addNew').modal('hide')
+       this.form.post('api/user')
+       .then(()=>{
+          Fire.$emit('AfterCreate');
+          $('#addNew').modal('hide')
+       })
+       .catch(()=>{
+
+       })
+
        }
     },
         created() {
-        this.loadUsers();
+           this.loadUsers();
+           Fire.$on('AfterCreate',() => {
+               this.loadUsers();
+           })
+          // setInterval(() => this.loadUsers(), 3000);
+
         }
     }
 </script>
