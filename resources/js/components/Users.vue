@@ -19,6 +19,8 @@
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Type</th>
+                  <th>Registered At</th>
                   <th>Modify</th>
                 </tr>
 
@@ -27,6 +29,8 @@
                   <td>{{user.id}}</td>
                   <td>{{user.name}}</td>
                   <td>{{user.email}}</td>
+                  <td>{{user.type}}</td>
+                  <td>{{user.created_at | myDate}}</td>
                   <td>
                  <a href="#">Edit
                  <i class="fa fa-edit text-blue"></i>
@@ -132,6 +136,7 @@
        },
        createUser(){
        this.form.post('api/user');
+       $('#addNew').modal('hide')
        }
     },
         created() {
