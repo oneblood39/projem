@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Todo;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -17,6 +18,7 @@ class UserController extends Controller
     public function index()
     {
         return User::where('id', '!=', '1')->get();
+        //return Todo::all();
     }
 
     /**
