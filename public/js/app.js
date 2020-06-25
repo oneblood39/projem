@@ -2149,6 +2149,7 @@ __webpack_require__.r(__webpack_exports__);
       editmode: false,
       users: {},
       form: new Form({
+        id: '',
         name: '',
         email: '',
         password: '',
@@ -2159,7 +2160,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    updateUser: function updateUser() {},
+    updateUser: function updateUser() {
+      this.form.put('api/user/' + this.form.id).then(function () {
+        //success
+        Fire.$emit('AfterCreate');
+        $('#addNew').modal('hide');
+        Swal.fire('Updated!', 'success');
+      })["catch"](function () {});
+    },
     editModal: function editModal(user) {
       this.editmode = true;
       this.form.reset();
