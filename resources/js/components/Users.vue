@@ -26,16 +26,16 @@
 
 
                 <tr v-for="user in users" :key="user.id">
-                  <td>{{user.id}}</td>
-                  <td>{{user.name}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.type}}</td>
-                  <td>{{user.created_at | myDate}}</td>
+                  <td>{{user.data.id}}</td>
+                  <td>{{user.data.name}}</td>
+                  <td>{{user.data.email}}</td>
+                  <td>{{user.data.type}}</td>
+                  <td>{{user.data.created_at | myDate}}</td>
                   <td>
                  <a href="#" @click="editModal(user)">Edit
                  <i class="fa fa-edit text-blue"></i>
                  </a>
-                 <a href="#" @click="deleteUser(user.id)">Delete
+                 <a href="#" @click="deleteUser(user.data.id)">Delete
                  <i class="fa fa-trash text-red"></i>
                  </a>
                   </td>
@@ -144,7 +144,7 @@
          })
          .catch(() => {
              Swal.fire(
-             'Cant Deleted!',
+             'Cant Updated!',
               'error'
              )
          });
@@ -153,7 +153,7 @@
           this.editmode = true;
           this.form.reset();
           $('#addNew').modal('show');
-          this.form.fill(user);
+          this.form.fill(user.data);
        },
        newModal(){
           this.form.reset();
@@ -195,7 +195,7 @@
            })
        },
        loadUsers(){
-           axios.get("api/user").then(({ data }) => (this.users = data));
+           axios.get("api/user").then(({ data }) => (this.users = data.data));
        },
        createUser(){
        this.form.post('api/user')

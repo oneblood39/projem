@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -20,7 +21,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::where('id', '!=', '1')->get();
+    // return User::where('id',  '!=', '1')->paginate(5);
+      //  return Users::collection(User::all());
+      //  return new UserCollection(User::all());
+        return UserResource::collection(User::where('id', '!=', '1')->paginate(20));
     }
 
     /**
