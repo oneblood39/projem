@@ -109,10 +109,6 @@
  </div>
 <!-- create user Modal ends here-->
 
-
-
-
-
     <!-- /.row -->
     </div>
 </template>
@@ -147,7 +143,10 @@
              )
          })
          .catch(() => {
-
+             Swal.fire(
+             'Cant Deleted!',
+              'error'
+             )
          });
        },
        editModal(user){
