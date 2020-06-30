@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <a href="index3.html" class="brand-link">
       <img src="./img/logo.jpg" alt="CRM logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Todo App</span>
+      <span class="brand-text font-weight-light">Telsam CRM</span>
     </a>
 
     <!-- Sidebar -->
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog text-green"></i>
               <p>
-                Management
+                Yönetim
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <router-link to="/users" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
-                  <p>Users</p>
+                  <p>Kullanıcılar</p>
                 </router-link>
               </li>
               <li class="nav-item">
@@ -131,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
              <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user text-orange"></i>
               <p>
-                Profile
+                Profil
               </p>
             </router-link>
           </li>
@@ -142,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                              document.getElementById('logout-form').submit();">
                 <i class="nav-icon fas fa-power-off text-red"></i>
                   <p>
-                {{ __('Logout') }} </p>
+                {{ __('Çıkış') }} </p>
             </a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

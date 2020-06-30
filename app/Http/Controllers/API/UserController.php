@@ -24,7 +24,7 @@ class UserController extends Controller
     // return User::where('id',  '!=', '1')->paginate(5);
       //  return Users::collection(User::all());
       //  return new UserCollection(User::all());
-        return UserResource::collection(User::where('id', '!=', '1')->paginate(20));
+        return UserResource::collection(User::where('id', '!=', '1')->paginate(100));
     }
 
     /**

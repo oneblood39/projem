@@ -2186,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        cancelButtonColor: '#dd3333',
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         //send request to server
@@ -2212,6 +2212,10 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/user').then(function () {
         Fire.$emit('AfterCreate');
         $('#addNew').modal('hide');
+        toast.fire({
+          icon: 'success',
+          title: 'Kullanıcı ekleme başarılı'
+        });
       })["catch"](function () {});
     }
   },
@@ -81802,6 +81806,18 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a;
+var toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: function onOpen(toast) {
+    toast.addEventListener('mouseenter', Swal.stopTimer);
+    toast.addEventListener('mouseleave', Swal.resumeTimer);
+  }
+});
+window.toast = toast;
 window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["Form"];
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"]);
@@ -82459,8 +82475,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Telsam Yazılım\Desktop\projem\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Telsam Yazılım\Desktop\projem\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Telsam Yazılım\Desktop\telsamcrm\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Telsam Yazılım\Desktop\telsamcrm\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

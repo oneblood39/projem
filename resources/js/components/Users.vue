@@ -168,7 +168,7 @@
            icon: 'warning',
            showCancelButton: true,
            confirmButtonColor: '#3085d6',
-           cancelButtonColor: '#d33',
+           cancelButtonColor: '#dd3333',
            confirmButtonText: 'Yes, delete it!'
            }).then((result) => {
 
@@ -202,6 +202,10 @@
        .then(()=>{
           Fire.$emit('AfterCreate');
           $('#addNew').modal('hide')
+          toast.fire({
+            icon: 'success',
+            title: 'Kullanıcı ekleme başarılı'
+          })
        })
        .catch(()=>{
 
